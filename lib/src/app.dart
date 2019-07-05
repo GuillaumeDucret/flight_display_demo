@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
+import 'screen.dart';
 import 'demo/speed_tape_demo.dart';
+import 'demo/compass_rose_demo.dart';
 
 class App extends StatelessWidget {
   @override
@@ -11,15 +14,11 @@ class App extends StatelessWidget {
         primaryColor: Colors.white,
         fontFamily: 'Roboto',
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Flight display demo'),
-        ),
-        body: Container(
-            child: SpeedTapeDemo(),
-            padding: EdgeInsets.all(20),
-            constraints: BoxConstraints.expand()),
-      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => AppScreen(title: 'Speed tape', child: SpeedTapeDemo()),
+        '/compassRose': (context) => AppScreen(title: 'Compass rose', child: CompassRoseDemo()),
+      },
     );
   }
 }
